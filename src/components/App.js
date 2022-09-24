@@ -9,9 +9,20 @@ import React, { useState, useRef } from 'react';
 
 function App() {
 
- /**
-  * code here
-  */
+ const fnameRef = useRef();
+  const emailRef = useRef();
+  const [error, setError] = useState(undefined);
+  const [data, setData] = useState({ fname: undefined, lname: undefined });
+
+  const change = () => {
+    if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(emailRef.current.value)) {
+      setError(undefined);
+      document.getElementById("submit").disabled = false;
+    } else {
+      setError("Email is invalid");
+      document.getElementById("submit").disabled = true;
+    }
+  };
 
   return(
     <div className="App">
