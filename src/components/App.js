@@ -27,14 +27,20 @@ function App() {
   return(
     <div className="App">
       <h1>How About Them Apples</h1>
-      <form>
+      <form onSubmit={(e) => {
+          e.preventDefault();
+          setData({
+            fname: fnameRef.current.value,
+            lname: emailRef.current.value
+          });
+        }}>
         <fieldset>
           <label>
             <p>First Name</p>
             <input id='fname' name="name"  ref={fnameRef}/>
             <br></br>
             <p>Email</p>
-            <input id='lname' name="name"   ref={emailRef}/>
+            <input id='lname' name="name" onChange={change}  ref={emailRef}/>
             {error && <h2 style={{color: 'red'}}>{error}</h2>}
           </label>
         </fieldset>
